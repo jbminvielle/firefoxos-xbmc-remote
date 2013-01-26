@@ -9,11 +9,8 @@ define(function(require) {
     var $ = require('zepto');
     var rpc = require('jsonrpc');
     window.rpc = rpc;
-    window.xbm = rpc.openServer("http://localhost:8080/jsonrpc");
-
-    window.xbm.request("Application.GetProperties", { properties: ["volume"] }, function(d) {
-      	alert('It Works');
-    });
+    //window.xbm = rpc.openServer("http://localhost:8080/jsonrpc");
+    window.xbm = rpc.openServer("http://10.102.180.42:3920/jsonrpc");
 
     var xbmc = {
     	"JSON_RPC" : "/jsonrpc",
@@ -46,7 +43,6 @@ define(function(require) {
 
         	var that = this;
         	window.xbm.request("Player.GetActivePlayers",undefined,function(data) {
-        		alert('Request Access init');
             console.log(data)
         		if("undefined" !== typeof data.result[0].playerid) {
         			that.player_id  = data.result[0].playerid;
@@ -58,7 +54,6 @@ define(function(require) {
         },
 
     	playPause : function() {
-        alert("clicked")
     		window.xbm.request('Player.PlayPause',{ "playerid": xbmc.player_id}, function(data) {
 
     			if("undefined" == typeof data.result.speed) {
@@ -68,7 +63,9 @@ define(function(require) {
 
     			if(data.result.speed == 0) {
     				xbmc.control.play.classList.add('status_paused');
+            xbmc.control.play.classList.remove('status_playing');
     			}else {
+    				xbmc.control.play.classList.add('status_playing');
     				xbmc.control.play.classList.remove('status_paused');
     			}
 
@@ -88,22 +85,29 @@ define(function(require) {
     	},
 
     	up : function() {
-    		window.xbm.request('Application.SetVolume',{"volume":"increment"}, function(data) {
-    			console.log("success increment");
+        xbmc.volume += 5;
+    		window.xbm.request('Application.SetVolume',{"volume":xbmc.volume}, function(data) {
+    			console.log(data);
     		});
     	},
 
     	down : function() {
-    		window.xbm.request('Application.SetVolume',{"volume":"decrement"}, function(data) {
-    			console.log("success Decrement");
+        xbmc.volume -= 5;
+    		window.xbm.request('Application.SetVolume',{"volume":xbmc.volume}, function(data) {
+    			console.log(data);
     		});
     	}
     };
+
+    window.xbm.request("Application.GetProperties", { properties: ["volume"] }, function(d) {
+      xbmc.volume = d.result.volume;
+    });
 
     xbmc.init();
     xbmc.control.play.addEventListener('click',xbmc.playPause);
     xbmc.control.next.addEventListener('click',xbmc.next);
     xbmc.control.previous.addEventListener('click',xbmc.previous);
-
+    xbmc.manage.up.addEventListener('click', xbmc.up);
+    xbmc.manage.bottom.addEventListener('click', xbmc.down);
 });
 
