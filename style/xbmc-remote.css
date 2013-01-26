@@ -50,11 +50,11 @@ header {
   border: none;
   font-size: 1px;
 }
-#xbmc-play {
+#xbmc-playpause.status_paused {
   background: url('../img/button_play.png') no-repeat;
 }
 
-#xbmc-pause {
+#xbmc-playpause.status_playing {
   background: url('../img/button_pause.png') no-repeat;
 }
 
@@ -65,3 +65,35 @@ header {
 #xbmc-next {
   background: url('../img/button_next.png') no-repeat;
 }
+
+.round_button:active {
+  opacity: 0.5;
+}
+
+.square_rounded_button {
+  background: #a5b9a8;
+  border: none;
+  padding: 3px;
+}
+
+/****
+ * Installer
+ */
+
+#install_me {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  border: none;
+  font-size: 1.5em;
+  padding: 10px;
+  margin: 0;
+}
+
+
+
+
+
+
