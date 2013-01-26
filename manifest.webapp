@@ -1,0 +1,13 @@
+{
+  "name": "XBMC remote control",
+  "description": "Remote Control",
+  "launch_path": "/",
+  "icons": {
+    "128": "/img/xbmc.png"
+  },
+  "developer": {
+    "name": "Team-dev",
+    "url": "http://localhost:8080/"
+  },
+  "default_locale": "en"
+}
