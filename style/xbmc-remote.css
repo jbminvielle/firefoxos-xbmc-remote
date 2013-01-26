@@ -26,7 +26,7 @@ html, body {
 /* Setting panels: full-size <section role="region"> blocks */
 header {
   padding: 20px;
-  font-size: 3em;
+  font-size: 2.4em;
 
   background-image: -moz-linear-gradient(bottom, rgb(110,125,114) , rgb(68,84,72));
   background-image: -webkit-linear-gradient(bottom, rgb(110,125,114) , rgb(68,84,72));
