@@ -10,19 +10,25 @@ define(function(require) {
     var self = { };
     var currentId = 1;
 
-    self.request = function(method, params) {
+    self.request = function(method, params, handler) {
       var req = {
         "jsonrpc": "2.0",
         "method": method,
         "params": params,
-        "id": currentId
+        "id": currentId++
       };
-      return $.ajax({
-        type: "POST",
-        url: url,
-        data: JSON.stringify(req),
-        dataType: "json"
-      });
+
+
+      // currently we can't send raw XHR request as host is different
+      // this hack depends on force CORS Firefox addon
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', url);
+      xhr.onreadystatechange = function () {
+        if (this.status == 200 && this.readyState == 4) {
+          handler(JSON.parse(this.responseText));
+        }
+      };
+      xhr.send(JSON.stringify(req));
     }
 
     return self;

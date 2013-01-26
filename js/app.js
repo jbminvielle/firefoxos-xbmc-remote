@@ -9,6 +9,7 @@ define(function(require) {
     var $ = require('zepto');
     var rpc = require('jsonrpc');
     window.rpc = rpc;
+
     var base_url = 'http://10.102.180.42:3920/';
     var xbmc = {
     	"JSON_RPC" : "/jsonrpc",
@@ -82,5 +83,10 @@ define(function(require) {
     xbmc.init();
     xbmc.playPause();
 
+    window.xbmc = rpc.openServer("http://localhost:8080/jsonrpc")
+
+    window.test = function() {
+      window.xbmc.request("Application.GetProperties", { properties: ["volume"] }, console.dir);
+    }
 });
 
