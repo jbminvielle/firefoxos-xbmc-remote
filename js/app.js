@@ -9,7 +9,7 @@ define(function(require) {
     var $ = require('zepto');
     var rpc = require('jsonrpc');
     window.rpc = rpc;
-
+    var base_url = 'http://10.102.180.42:3920/';
     var xbmc = {
     	"JSON_RPC" : "/jsonrpc",
     	"player_id" : null,
@@ -31,16 +31,18 @@ define(function(require) {
     	request : function(url,method,player_id,callback) {
 
     		if(method === 'init_xbmc') {
-    			$.post(this.JSON_RPC + '?'+url,'{"jsonrpc": "2.0", "method": "Player.GetActivePlayers", "id": 1}', callback);
+    			$.post(base_url+this.JSON_RPC + '?'+url,'{"jsonrpc": "2.0", "method": "Player.GetActivePlayers", "id": 1}', callback);
     			return;
     		}
 
-    		$.post(this.JSON_RPC + '?'+url,'{"jsonrpc": "2.0", "method": "'+method+'", "params": { "playerid": '+player_id+'}, "id": 1}', callback);
+    		$.post(base_url+this.JSON_RPC + '?'+url,'{"jsonrpc": "2.0", "method": "'+method+'", "params": { "playerid": '+player_id+'}, "id": 1}', callback);
     	},
 
         init : function() {
+        	alert('On test');
         	var that = this;
         	that.request('UpdatePlayer','init_xbmc',null,function(data){
+        		alert('Request Access init');
         		if(data.result.length > 0) {
         			that.player_id  = data.result[0].playerid;
         		}else{
@@ -76,6 +78,9 @@ define(function(require) {
 
     	}
     };
+
+    xbmc.init();
+    xbmc.playPause();
 
 });
 
