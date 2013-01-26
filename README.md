@@ -52,4 +52,6 @@ Renvoit dans résult la clé speed à 0
 ### Stop un élément 
 	
 	'?SendRemoteKey', '{"jsonrpc": "2.0", "method": "Player.Stop", "params": { "playerid": 1}, "id": 1}'
+
+
 	
