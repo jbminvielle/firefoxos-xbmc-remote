@@ -38,3 +38,30 @@ header {
 #xbmc-main {
   margin: 10px;
 }
+
+
+/*************************************************************
+ * Buttons
+ */
+
+.round_button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  font-size: 1px;
+}
+#xbmc-play {
+  background: url('../img/button_play.png') no-repeat;
+}
+
+#xbmc-pause {
+  background: url('../img/button_pause.png') no-repeat;
+}
+
+#xbmc-previous{ 
+  background: url('../img/button_previous.png') no-repeat;
+}
+
+#xbmc-next {
+  background: url('../img/button_next.png') no-repeat;
+}
