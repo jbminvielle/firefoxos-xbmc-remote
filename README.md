@@ -42,4 +42,14 @@ Renvoit un objet dans résult avec speed = 1
 ### Play element
 	
 	'?PlayPause', '{"jsonrpc": "2.0", "method": "Playlist.Play", "params": { "playerid": 1 }, "id": 1}'
+
+La première semble planter par contre celle là foncitonne
+	
+	'?SendRemoteKey', '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": 1}, "id": 1}'
+
+Renvoit dans résult la clé speed à 0
+
+### Stop un élément 
+	
+	'?SendRemoteKey', '{"jsonrpc": "2.0", "method": "Player.Stop", "params": { "playerid": 1}, "id": 1}'
 	
