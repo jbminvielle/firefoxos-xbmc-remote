@@ -29,31 +29,30 @@
 			<div class="xbmc-content">
 
 				<h2>Control Media</h2>
-				<button id="xbmc-play">Play</button>
-				<button id="xbmc-pause">Pause</button>
-				<button id="xbmc-previous">Previous</button>
-				<button id="xbmc-next">Next</button>
-				<button id="xbmc-fastprevious">Next</button>
+				<button id="xbmc-previous" class="round_button">Previous</button>
+				<button id="xbmc-playpause" class="round_button status_paused">Play/Pause</button>
+				<button id="xbmc-next" class="round_button">Next</button>
 			</div>
 
 			
 			<div class="xbmc-content">
 				<h2>Control XBMC</h2>
-				<button id="xbmc-home">Home</button>
-				<button id="xbmc-up">Haut</button>
-				<button id="xbmc-right">Haut</button>
+				<button id="xbmc-home" class="square_rounded_button">Home</button>
+				<button id="xbmc-up" class="square_rounded_button">Haut</button>
+				<button id="xbmc-right" class="square_rounded_button">Haut</button>
 
-				<button id="xbmc-ok">ok</button>
+				<button id="xbmc-ok" class="square_rounded_button">ok</button>
 
-				<button id="xbmc-bottom">Haut</button>
-				<button id="xbmc-left">Haut</button>
+				<button id="xbmc-bottom" class="square_rounded_button">Haut</button>
+				<button id="xbmc-left" class="square_rounded_button">Haut</button>
 			</div>
 
-
-			<button onclick="navigator.mozApps.install(manifest_url); return false;">
-			  Install this awesome app on your homescreen!
-			</button>
 		</div>
+
+	<button onclick="navigator.mozApps.install(manifest_url); return false;" id="install_me">
+	  Install this awesome app on your homescreen!
+	</button>
+
     <!-- Using require.js, a module system for javascript, include the
          js files. This loads "main.js", which in turn can load other
          files, all handled by require.js:

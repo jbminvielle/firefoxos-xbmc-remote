@@ -38,3 +38,62 @@ header {
 #xbmc-main {
   margin: 10px;
 }
+
+
+/*************************************************************
+ * Buttons
+ */
+
+.round_button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  font-size: 1px;
+}
+#xbmc-playpause.status_paused {
+  background: url('../img/button_play.png') no-repeat;
+}
+
+#xbmc-playpause.status_playing {
+  background: url('../img/button_pause.png') no-repeat;
+}
+
+#xbmc-previous{ 
+  background: url('../img/button_previous.png') no-repeat;
+}
+
+#xbmc-next {
+  background: url('../img/button_next.png') no-repeat;
+}
+
+.round_button:active {
+  opacity: 0.5;
+}
+
+.square_rounded_button {
+  background: #a5b9a8;
+  border: none;
+  padding: 3px;
+}
+
+/****
+ * Installer
+ */
+
+#install_me {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  border: none;
+  font-size: 1.5em;
+  padding: 10px;
+  margin: 0;
+}
+
+
+
+
+
+
