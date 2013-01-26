@@ -51,10 +51,30 @@ define(function(require) {
         	});
         },
 
-    	play : function() {
+    	playPause : function() {
     		this.request('SendRemoteKey','Player.PlayPause',this.player_id, function(data) {
-    			console.log(data);
+
+    			if("undefined" == typeof data.result.speed) {
+    				alert('Une erreur est survenue');
+    				return;
+    			}
+ 
+    			if(data.result.speed == 0) {
+    				this.control.classList.add('pause');
+    			}else {
+    				this.control.classList.remove('pause');
+    			}
+
     		});
+    	},
+
+    	next : function() {
+
+    	},
+
+    	previous : function() {
+
+    		
     	}
     }
         
