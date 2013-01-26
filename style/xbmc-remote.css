@@ -55,6 +55,7 @@ header {
   border: none;
   font-size: 1px;
 }
+
 #xbmc-playpause.status_paused {
   background: url('../img/button_play.png') no-repeat;
 }
@@ -79,6 +80,8 @@ header {
   color: white;
   font-weight: bold;
   font-size: 3em;
+  min-width: 60px;
+  box-shadow: 0 0 15px #333;
 }
 
 .round_button:active, .square_rounded_button:active {
