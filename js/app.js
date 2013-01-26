@@ -12,17 +12,14 @@ define(function(require) {
     window.xbm = rpc.openServer("http://localhost:8080/jsonrpc");
 
     window.xbm.request("Application.GetProperties", { properties: ["volume"] }, function(d) {
-
       	alert('It Works');
     });
 
-
-    var base_url = 'http://10.102.180.42:3920/';
     var xbmc = {
     	"JSON_RPC" : "/jsonrpc",
     	"player_id" : null,
         "control" : {
-            "play" :         document.getElementById('xbmc-play'),
+            "play" :         document.getElementById('xbmc-playpause'),
             "next" :         document.getElementById('xbmc-next'),
             "previous" :     document.getElementById('xbmc-previous')
         },
@@ -50,41 +47,42 @@ define(function(require) {
         	var that = this;
         	window.xbm.request("Player.GetActivePlayers",undefined,function(data) {
         		alert('Request Access init');
-        		if(data.result.length > 0) {
+            console.log(data)
+        		if("undefined" !== typeof data.result[0].playerid) {
         			that.player_id  = data.result[0].playerid;
         		}else{
         			alert('Votre Serveur XBMC n\'est pas actif');
         		}
         	});
-        	
+
         },
 
     	playPause : function() {
-    		var that = this;
-    		window.xbm.request('Player.PlayPause',{ "playerid": that.player_id}, function(data) {
+        alert("clicked")
+    		window.xbm.request('Player.PlayPause',{ "playerid": xbmc.player_id}, function(data) {
 
     			if("undefined" == typeof data.result.speed) {
     				alert('Une erreur est survenue');
     				return;
     			}
- 
+
     			if(data.result.speed == 0) {
-    				that.control.classList.add('status_paused');
+    				xbmc.control.play.classList.add('status_paused');
     			}else {
-    				that.control.classList.remove('status_paused');
+    				xbmc.control.play.classList.remove('status_paused');
     			}
 
     		});
     	},
 
     	next : function() {
-    		window.xbm.request('Player.GoNext',{ "playerid": this.player_id}, function(data) {
+    		window.xbm.request('Player.GoNext',{ "playerid": xbmc.player_id}, function(data) {
     			console.log("success next");
     		});
     	},
 
     	previous : function() {
-    		window.xbm.request('Player.GoPrevious',{ "playerid": this.player_id}, function(data) {
+    		window.xbm.request('Player.GoPrevious',{ "playerid": xbmc.player_id}, function(data) {
     			console.log("success previous");
     		});
     	},
@@ -103,9 +101,9 @@ define(function(require) {
     };
 
     xbmc.init();
-    xbmc.control.play.addEventListener('click',xbmc.PlayPause());
-    xbmc.control.next.addEventListener('click',xbmc.next());
-    xbmc.control.previous.addEventListener('click',xbmc.previous());
-    
+    xbmc.control.play.addEventListener('click',xbmc.playPause);
+    xbmc.control.next.addEventListener('click',xbmc.next);
+    xbmc.control.previous.addEventListener('click',xbmc.previous);
+
 });
 
