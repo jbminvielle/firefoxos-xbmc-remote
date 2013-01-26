@@ -10,7 +10,10 @@ define(function(require) {
     var $ = require('zepto');
     var rpc = require('jsonrpc');
     window.rpc = rpc;
+    window.xbmc = rpc.openServer("http://localhost:8080/jsonrpc")
 
-
+    window.test = function() {
+      window.xbmc.request("Application.GetProperties", { properties: ["volume"] }, console.dir);
+    }
 });
 
