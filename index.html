@@ -16,11 +16,10 @@
 	
 </head>
 <body>
-	
+
 	<script>
 	var manifest_url = "http://my.webapp.com/manifest.json";
 	</script>
-
 
 	<header>
 		XMBC Remote Control
@@ -42,7 +41,7 @@
 				<button id="xbmc-home">Home</button>
 				<button id="xbmc-up">Haut</button>
 				<button id="xbmc-right">Haut</button>
-				
+
 				<button id="xbmc-ok">ok</button>
 
 				<button id="xbmc-bottom">Haut</button>
@@ -54,5 +53,14 @@
 			  Install this awesome app on your homescreen!
 			</button>
 		</div>
+    <!-- Using require.js, a module system for javascript, include the
+         js files. This loads "main.js", which in turn can load other
+         files, all handled by require.js:
+         http://requirejs.org/docs/api.html#jsfiles -->
+    <script type="text/javascript"
+            data-main="js/init.js"
+            src="js/lib/require.js">
+    </script>
+
 </body>
 </html>
