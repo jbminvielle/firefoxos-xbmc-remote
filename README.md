@@ -25,4 +25,21 @@ Même objet que prédécement mais cette fois result est un objet
 
 ### Changer de playlist
 
+* Element Suivant
+
 	'?SkipNext', '{"jsonrpc": "2.0", "method": "Player.GoNext", "params": { "playerid": 1}, "id": 1}'
+
+* Element prédédent
+
+	'?SkipPrevious', '{"jsonrpc": "2.0", "method": "Player.GoPrevious", "params": { "playerid": 1 }, "id": 1}'
+
+### Mettre un élément en pause
+
+	'?PlayPause', '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": 1 }, "id": 1}'
+
+Renvoit un objet dans résult avec speed = 1
+
+### Play element
+	
+	'?PlayPause', '{"jsonrpc": "2.0", "method": "Playlist.Play", "params": { "playerid": 1 }, "id": 1}'
+	
