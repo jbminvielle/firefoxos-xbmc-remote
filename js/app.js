@@ -59,9 +59,9 @@ define(function(require) {
     			}
  
     			if(data.result.speed == 0) {
-    				this.control.classList.add('pause');
+    				this.control.classList.add('status_paused');
     			}else {
-    				this.control.classList.remove('pause');
+    				this.control.classList.remove('status_paused');
     			}
 
     		});
