@@ -10,6 +10,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>XBMC remote Control</title>
+	
+	<!-- Common style -->
+	<link rel="stylesheet" type="text/css" href="style/xbmc-remote.css"/>
+	
 </head>
 <body>
 	
@@ -17,10 +21,11 @@
 	var manifest_url = "http://my.webapp.com/manifest.json";
 	</script>
 
-	<button onclick="navigator.mozApps.install(manifest_url); return false;">
-	  Install this awesome app on your homescreen!
-	</button>
- 		
+
+	<header>
+		XMBC Remote Control
+	</header>
+
 		<div id="xbmc-main">
 			<div class="xbmc-content">
 
@@ -43,8 +48,11 @@
 				<button id="xbmc-bottom">Haut</button>
 				<button id="xbmc-left">Haut</button>
 			</div>
+
+
+			<button onclick="navigator.mozApps.install(manifest_url); return false;">
+			  Install this awesome app on your homescreen!
+			</button>
 		</div>
-
-
 </body>
 </html>

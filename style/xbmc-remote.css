@@ -1,6 +1,5 @@
 /**
- * Settings style & layout
- * note: `lists.css' must be loaded before this stylesheet
+ * remote style & layout
  */
 
 html, body {
@@ -11,4 +10,29 @@ html, body {
   font-size: 10px;
   font-family: "MozTT", sans-serif;
   overflow: hidden;
+
+  background-color: #272E33;
+  background-image: url('images/grain.png');
+  background-repeat: repeat;
+
+  color: white;
+}
+
+
+/******************************************************************************
+ * Setting panels: full-size <section role="region"> blocks
+ */
+
+/* Setting panels: full-size <section role="region"> blocks */
+header {
+  padding: 20px;
+  font-size: 2em;
+
+  background-image: -moz-linear-gradient(bottom, rgb(81,173,109)  , rgb(53,117,47));
+  background-image: -webkit-linear-gradient(bottom, rgb(81,173,109) , rgb(53,117,47));
+}
+
+
+#xbmc-main {
+  margin: 10px;
 }
