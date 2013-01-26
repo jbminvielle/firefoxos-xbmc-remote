@@ -36,7 +36,7 @@ header {
 
 
 #xbmc-main {
-  margin: 10px;
+  margin: 20px;
 }
 
 .xbmc-content {
@@ -82,6 +82,7 @@ header {
   font-size: 3em;
   min-width: 60px;
   box-shadow: 0 0 15px #333;
+  margin: 3px;
 }
 
 .round_button:active, .square_rounded_button:active {
@@ -103,9 +104,11 @@ input[type=range] {
   bottom: 0;
 
   border: none;
-  font-size: 1.5em;
+  font-size: 1em;
   padding: 10px;
   margin: 0;
+
+  border-radius: 0px;
 }
 
 

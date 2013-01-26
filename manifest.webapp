@@ -1,7 +1,7 @@
 {
   "name": "XBMC remote control",
   "description": "Remote Control",
-  "launch_path": "/",
+  "launch_path": "/index.html",
   "icons": {
     "128": "/img/xbmc.png"
   },
