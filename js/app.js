@@ -6,14 +6,13 @@ define(function(require) {
     // Zepto provides nice js and DOM methods (very similar to jQuery,
     // and a lot smaller):
     // http://zeptojs.com/
-    console.log("hi");
     var $ = require('zepto');
     var rpc = require('jsonrpc');
     window.rpc = rpc;
 
     var xbmc = {
-    	"JSON_RPC" = "/jsonrpc",
-    	"player_id" = null,
+    	"JSON_RPC" : "/jsonrpc",
+    	"player_id" : null,
         "control" : {
             "play" :         document.getElementById('xbmc-play'),
             "pause" :        document.getElementById('xbmc-pause'),
@@ -74,17 +73,9 @@ define(function(require) {
 
     	previous : function() {
 
-    		
+
     	}
-    }
-        
-        
-        
-        
-        
-
-
-
     };
+
 });
 
