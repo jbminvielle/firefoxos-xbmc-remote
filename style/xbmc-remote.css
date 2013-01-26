@@ -39,6 +39,11 @@ header {
   margin: 10px;
 }
 
+.xbmc-content {
+  margin: 30px 0;
+  text-align: center;
+}
+
 
 /*************************************************************
  * Buttons
@@ -50,6 +55,7 @@ header {
   border: none;
   font-size: 1px;
 }
+
 #xbmc-playpause.status_paused {
   background: url('../img/button_play.png') no-repeat;
 }
@@ -66,14 +72,20 @@ header {
   background: url('../img/button_next.png') no-repeat;
 }
 
-.round_button:active {
-  opacity: 0.5;
-}
-
 .square_rounded_button {
   background: #a5b9a8;
   border: none;
-  padding: 3px;
+  padding: 5px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  min-width: 60px;
+  box-shadow: 0 0 15px #333;
+}
+
+.round_button:active, .square_rounded_button:active {
+  opacity: 0.5;
 }
 
 /****
