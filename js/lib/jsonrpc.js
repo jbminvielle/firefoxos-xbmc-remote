@@ -24,8 +24,12 @@ define(function(require) {
       var xhr = new XMLHttpRequest();
       xhr.open('POST', url);
       xhr.onreadystatechange = function () {
-        if (this.status == 200 && this.readyState == 4) {
+        if (this.readyState != 4) {
+          return;
+        } else if (this.status == 200) {
           handler(JSON.parse(this.responseText));
+        } else {
+          console.log("JSON ERROR: ("+this.status+") "+this.responseText)
         }
       };
       xhr.send(JSON.stringify(req));
