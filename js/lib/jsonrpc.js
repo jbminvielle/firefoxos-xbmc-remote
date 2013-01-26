@@ -26,6 +26,7 @@ define(function(require) {
       xhr.onreadystatechange = function () {
         if (this.status == 200 && this.readyState == 4) {
           handler(JSON.parse(this.responseText));
+          console.log('send');
         }
       };
       xhr.send(JSON.stringify(req));
