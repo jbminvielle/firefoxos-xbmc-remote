@@ -26,10 +26,12 @@ html, body {
 /* Setting panels: full-size <section role="region"> blocks */
 header {
   padding: 20px;
-  font-size: 2em;
+  font-size: 3em;
 
-  background-image: -moz-linear-gradient(bottom, rgb(81,173,109)  , rgb(53,117,47));
-  background-image: -webkit-linear-gradient(bottom, rgb(81,173,109) , rgb(53,117,47));
+  background-image: -moz-linear-gradient(bottom, rgb(110,125,114) , rgb(68,84,72));
+  background-image: -webkit-linear-gradient(bottom, rgb(110,125,114) , rgb(68,84,72));
+
+  box-shadow: 0 0 15px #333;
 }
 
 
