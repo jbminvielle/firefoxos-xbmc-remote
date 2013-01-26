@@ -9,6 +9,13 @@ define(function(require) {
     var $ = require('zepto');
     var rpc = require('jsonrpc');
     window.rpc = rpc;
+    window.xbm = rpc.openServer("http://localhost:8080/jsonrpc");
+
+    window.xbm.request("Application.GetProperties", { properties: ["volume"] }, function(d) {
+
+      	alert('It Works');
+    });
+
 
     var base_url = 'http://10.102.180.42:3920/';
     var xbmc = {
@@ -16,7 +23,6 @@ define(function(require) {
     	"player_id" : null,
         "control" : {
             "play" :         document.getElementById('xbmc-play'),
-            "pause" :        document.getElementById('xbmc-pause'),
             "next" :         document.getElementById('xbmc-next'),
             "previous" :     document.getElementById('xbmc-previous')
         },
@@ -40,21 +46,22 @@ define(function(require) {
     	},
 
         init : function() {
-        	alert('On test');
+
         	var that = this;
-        	that.request('UpdatePlayer','init_xbmc',null,function(data){
+        	window.xbm.request("Player.GetActivePlayers",undefined,function(data) {
         		alert('Request Access init');
         		if(data.result.length > 0) {
         			that.player_id  = data.result[0].playerid;
         		}else{
         			alert('Votre Serveur XBMC n\'est pas actif');
         		}
-
         	});
+        	
         },
 
     	playPause : function() {
-    		this.request('SendRemoteKey','Player.PlayPause',this.player_id, function(data) {
+    		var that = this;
+    		window.xbm.request('Player.PlayPause',{ "playerid": that.player_id}, function(data) {
 
     			if("undefined" == typeof data.result.speed) {
     				alert('Une erreur est survenue');
@@ -62,42 +69,43 @@ define(function(require) {
     			}
  
     			if(data.result.speed == 0) {
-    				this.control.classList.add('status_paused');
+    				that.control.classList.add('status_paused');
     			}else {
-    				this.control.classList.remove('status_paused');
+    				that.control.classList.remove('status_paused');
     			}
 
     		});
     	},
 
     	next : function() {
-    		'?SkipNext', '{"jsonrpc": "2.0", "method": "Player.GoNext", "params": { "playerid": 1}, "id": 1}'
+    		window.xbm.request('Player.GoNext',{ "playerid": this.player_id}, function(data) {
+    			console.log("success next");
+    		});
     	},
 
     	previous : function() {
-    		'?SkipPrevious', '{"jsonrpc": "2.0", "method": "Player.GoPrevious", "params": { "playerid": 1 }, "id": 1}'
+    		window.xbm.request('Player.GoPrevious',{ "playerid": this.player_id}, function(data) {
+    			console.log("success previous");
+    		});
     	},
 
     	up : function() {
-
+    		window.xbm.request('Application.SetVolume',{"volume":"increment"}, function(data) {
+    			console.log("success increment");
+    		});
     	},
 
     	down : function() {
-
-    		
+    		window.xbm.request('Application.SetVolume',{"volume":"decrement"}, function(data) {
+    			console.log("success Decrement");
+    		});
     	}
     };
 
     xbmc.init();
-    xbmc.playPause();
-
-    window.xbmc = rpc.openServer("http://localhost:8080/jsonrpc")
-
-    window.test = function() {
-      window.xbmc.request("Application.GetProperties", { properties: ["volume"] }, function(d) {
-
-      	alert('It Works');
-      });
-    }
+    xbmc.control.play.addEventListener('click',xbmc.PlayPause());
+    xbmc.control.next.addEventListener('click',xbmc.next());
+    xbmc.control.previous.addEventListener('click',xbmc.previous());
+    
 });
 
