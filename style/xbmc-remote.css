@@ -88,6 +88,10 @@ header {
   opacity: 0.5;
 }
 
+input[type=range] {
+  width: 200px;
+}
+
 /****
  * Installer
  */
