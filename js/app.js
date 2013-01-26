@@ -71,12 +71,20 @@ define(function(require) {
     	},
 
     	next : function() {
-
+    		'?SkipNext', '{"jsonrpc": "2.0", "method": "Player.GoNext", "params": { "playerid": 1}, "id": 1}'
     	},
 
     	previous : function() {
+    		'?SkipPrevious', '{"jsonrpc": "2.0", "method": "Player.GoPrevious", "params": { "playerid": 1 }, "id": 1}'
+    	},
 
+    	up : function() {
 
+    	},
+
+    	down : function() {
+
+    		
     	}
     };
 
@@ -86,7 +94,10 @@ define(function(require) {
     window.xbmc = rpc.openServer("http://localhost:8080/jsonrpc")
 
     window.test = function() {
-      window.xbmc.request("Application.GetProperties", { properties: ["volume"] }, console.dir);
+      window.xbmc.request("Application.GetProperties", { properties: ["volume"] }, function(d) {
+
+      	alert('It Works');
+      });
     }
 });
 
